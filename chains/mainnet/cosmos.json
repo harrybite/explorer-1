@@ -1,7 +1,7 @@
 {
     "chain_name": "PersonaPulse",
-    "api": ["http://146.190.9.5:1317"], 
-    "rpc": ["http://146.190.9.5:26657"],
+    "api": ["https://explorer-restapi.sovereignty.one"], 
+    "rpc": ["https://explorer-rpcapi.sovereignty.one"],
     "sdk_version": "0.42.6",
     "coin_type": "118",
     "min_tx_fee": "800",
