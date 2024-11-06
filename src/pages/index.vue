@@ -7,7 +7,7 @@ import {
 } from '@/stores/useDashboard';
 import ChainSummary from '@/components/ChainSummary.vue';
 import AdBanner from '@/components/ad/AdBanner.vue';
-
+import DefaultLayout from './../layouts/components/DefaultLayout.vue';
 import { computed, onMounted, ref } from 'vue';
 import { useBlockchain } from '@/stores';
 
@@ -38,7 +38,7 @@ const chainStore = useBlockchain()
 
 </script>
 <template>
-  <div class="">
+  <!-- <div class="">
     <div class="flex md:!flex-row flex-col items-center justify-center mb-6 mt-14 gap-2">
       <div class="w-16 rounded-full">
         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" 
@@ -112,7 +112,7 @@ const chainStore = useBlockchain()
         :name="chain.chainName"
       />
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>

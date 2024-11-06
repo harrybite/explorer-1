@@ -36,6 +36,8 @@ blockchain.$subscribe((m, s) => {
   }
 });
 
+
+
 const sidebarShow = ref(false);
 const sidebarOpen = ref(true);
 
@@ -83,7 +85,7 @@ dayjs()
         <RouterLink to="/" class="flex items-center">
           <img class="w-10 h-10" src="../../assets/logo.svg" />
           <h1 class="flex-1 ml-3 text-2xl font-semibold dark:text-white">
-            Ping.pub
+            SovereignT
           </h1>
         </RouterLink>
         <div
@@ -93,6 +95,8 @@ dayjs()
           <Icon icon="mdi-close" class="text-2xl" />
         </div>
       </div>
+
+       <!-- sidebar chain pages -->
       <div
         v-for="(item, index) of blockchain.computedChainMenu"
         :key="index"
@@ -108,7 +112,8 @@ dayjs()
             'collapse-close': index === 0 && !sidebarOpen,
           }"
         >
-          <input
+          <!-- Ecosystem -->
+          <!-- <input
             v-if="index > 0"
             type="checkbox"
             class="cursor-pointer !h-10 block"
@@ -143,7 +148,8 @@ dayjs()
             >
               {{ item?.badgeContent }}
             </div>
-          </div>
+          </div> -->
+
           <div class="collapse-content">            
             <div v-for="(el, key) of item?.children" class="menu bg-base-100 w-full !p-0">
               <RouterLink
@@ -182,6 +188,7 @@ dayjs()
                 </div>
               </RouterLink>
             </div>
+
             <div v-if="index === 0 && dashboard.networkType === NetworkType.Testnet" class="menu bg-base-100 w-full !p-0">
               <RouterLink 
               class="hover:bg-gray-100 dark:hover:bg-[#373f59] rounded cursor-pointer px-3 py-2 flex items-center"
@@ -202,10 +209,13 @@ dayjs()
                 </div>
               </RouterLink>
             </div>
+            
           </div>
         </div>
 
-        <RouterLink
+       <!-- All Blockchain -->
+
+        <!-- <RouterLink
           v-if="isNavLink(item)"
           :to="item?.to"
           @click="sidebarShow = false"
@@ -238,15 +248,21 @@ dayjs()
             {{ item?.badgeContent }}
           </div>
         </RouterLink>
-        <div
+        -->
+        <!-- <div
           v-if="isNavTitle(item)"
           class="px-4 text-sm text-gray-400 pb-2 uppercase"
         >
           {{ item?.heading }}
-        </div>
+        </div> -->
       </div>
+      
+
+
+
+      
       <div class="px-2">
-          <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">
+          <!-- <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">
             Tools
           </div>
           <RouterLink to="/wallet/suggest"
@@ -262,7 +278,7 @@ dayjs()
           <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">
           {{ $t('module.sponsors') }}
         </div>
-        <Sponsors />
+        <Sponsors /> -->
         <div class="px-4 text-sm pt-2 text-gray-400 pb-2 uppercase">{{ $t('module.links') }}</div>
         <a
           href="https://twitter.com/ping_pub"
@@ -277,7 +293,7 @@ dayjs()
           </div>
         </a>
         <a
-          v-if="showDiscord"
+        
           href="https://discord.com/invite/CmjYVSr6GW"
           target="_blank"
           class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
@@ -289,7 +305,7 @@ dayjs()
             Discord
           </div>
         </a>
-        <a
+        <!-- <a
           href="https://github.com/ping-pub/explorer/discussions"
           target="_blank"
           class="py-2 px-4 flex items-center rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-[#373f59]"
@@ -300,7 +316,7 @@ dayjs()
           >
             FAQ
           </div>
-        </a>
+        </a> -->
       </div>
     </div>
     <div class="xl:!ml-64 px-3 pt-4">
