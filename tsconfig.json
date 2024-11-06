@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue", "removedpages/cosmwasm"],
   "compilerOptions": {
     // "ignoreDeprecations": "5.0",
     "lib": [      
