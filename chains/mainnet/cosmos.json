@@ -9,7 +9,7 @@
         "base": "usoid",
         "symbol": "SOID",
         "exponent": "6",
-        "coingecko_id": "bluzelle", 
+        "coingecko_id": "qqqqq",
         "logo": "https://res.cloudinary.com/dimofdvnt/image/upload/v1730870502/maskbg_nhprpg.png"
     }],
     "features": ["dashboard", "blocks", "ibc", "uptime", "parameters", "consensus", "supply", "tx", "staking", "governance"],
