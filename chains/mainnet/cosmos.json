@@ -12,6 +12,8 @@
         "coingecko_id": "bluzelle", 
         "logo": "https://res.cloudinary.com/dimofdvnt/image/upload/v1730870502/maskbg_nhprpg.png"
     }],
+    "features": ["dashboard", "blocks", "ibc", "uptime", "parameters", "consensus", "supply", "tx", "staking", "governance"],
     "addr_prefix": "ssi",
-    "logo": "https://res.cloudinary.com/dimofdvnt/image/upload/v1730870502/maskbg_nhprpg.png"
+    "logo": "https://res.cloudinary.com/dimofdvnt/image/upload/v1730870502/maskbg_nhprpg.png",
+    "theme_color": "#ff00ff"
 }

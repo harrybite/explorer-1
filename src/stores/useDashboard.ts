@@ -150,6 +150,7 @@ function apiConverter(api: any[]) {
 }
 
 export function fromLocal(lc: LocalConfig): ChainConfig {
+  console.log("LC:", lc)
   const conf = {} as ChainConfig;
   if(lc.assets && Array.isArray(lc.assets)) {
     conf.assets = lc.assets.map((x) => ({

@@ -20,15 +20,15 @@
     <div
       class="hidden md:!block"
     >
-      <a
+      <!-- <a
         class="link link-primary no-underline mr-4"
         href="https://github.com/ping-pub/explorer/blob/master/LICENSE"
         target="noopener noreferrer"
         >License</a
-      >
+      > -->
       <a
         class="link link-primary no-underline"
-        href="https://github.com/ping-pub/explorer"
+        href="https://github.com/SovereigntyProtocol"
         target="noopener noreferrer"
         >Github</a
       >

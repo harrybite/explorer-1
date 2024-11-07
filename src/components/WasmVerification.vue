@@ -5,7 +5,7 @@ import { computed, onMounted, ref } from "vue";
 import TextElement from "@/components/dynamic/TextElement.vue";
 import DynamicComponent from '@/components/dynamic/DynamicComponent.vue';
 import { codeToHtml } from 'shiki'
-import { useWasmStore } from "removedpages/cosmwasm/WasmStore";
+import { useWasmStore } from "@/modules/[chain]/cosmwasm/WasmStore";
 import { toBase64 } from "@cosmjs/encoding";
 
 import { JsonViewer } from "vue3-json-viewer"
