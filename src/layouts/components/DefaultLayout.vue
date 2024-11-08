@@ -85,7 +85,7 @@ dayjs()
         <RouterLink to="/" class="flex items-center">
           <img class="w-10 h-10" src="../../assets/logo.png" />
           <h1 class="flex-1 ml-3 text-2xl font-semibold dark:text-white">
-            SovereignT
+            PersonaPulse
           </h1>
         </RouterLink>
         <div
