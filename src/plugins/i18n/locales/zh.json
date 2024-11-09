@@ -36,6 +36,8 @@
   "account": {
     "type": "类型",
     "address": "地址",
+    "did": "DID",
+    "username": "User Name",
     "acc": "账户",
     "acc_num": "账户号",
     "sequence": "序列号",

@@ -39,6 +39,8 @@
     "received": "Kürzlich erhalten",
     "type": "Typ",
     "address": "Adresse",
+    "did": "DID",
+    "username": "User Name",
     "acc": "Konto",
     "acc_num": "Kontonummer",
     "sequence": "Sequenz",

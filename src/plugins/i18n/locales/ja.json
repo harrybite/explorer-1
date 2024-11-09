@@ -39,6 +39,8 @@
     "received": "最近の受取",
     "type": "タイプ",
     "address": "アドレス",
+    "did": "DID",
+    "username": "User Name",
     "acc": "アカウント",
     "acc_num": "アカウント番号",
     "sequence": "シーケンス",

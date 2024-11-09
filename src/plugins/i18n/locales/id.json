@@ -34,6 +34,8 @@
     "account": {
       "type": "Tipe",
       "address": "Alamat",
+      "did": "DID",
+      "username": "User Name",
       "acc": "Akun",
       "acc_num": "Nomor Akun",
       "sequence": "Urutan",

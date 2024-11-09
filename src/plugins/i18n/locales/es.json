@@ -39,6 +39,8 @@
     "received": "Recibido recientemente",
     "type": "Tipo",
     "address": "Dirección",
+    "did": "DID",
+    "username": "User Name",
     "acc": "Cuenta",
     "acc_num": "Número de cuenta",
     "sequence": "Secuencia",

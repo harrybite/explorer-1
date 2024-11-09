@@ -5,6 +5,7 @@ import type {
   Coin,
   ConnectionWithProof,
   DenomTrace,
+  Didmetadata,
   NodeInfo,
   PaginabledAccounts,
   PaginatedIBCChannels,
@@ -43,10 +44,21 @@ import type {
 } from '@/types/staking';
 import type { PaginatedTxs, Tx, TxResponse } from '@/types';
 import semver from 'semver'
+
 export interface Request<T> {
   url: string;
   adapter: (source: any) => Promise<T>;
 }
+
+// export interface Didmetadata {
+//   "id" : {
+//       creator: string,
+//       did: string,
+//       hash: string,
+//       owner: string,
+//       username: string
+//   } 
+// }
 
 export interface AbstractRegistry {
   [key: string]: Request<any>;
@@ -57,6 +69,8 @@ export interface RequestRegistry extends AbstractRegistry {
   auth_params: Request<any>;
   auth_accounts: Request<PaginabledAccounts>;
   auth_account_address: Request<{ account: AuthAccount }>;
+
+  did:Request<Didmetadata>;
 
   bank_params: Request<BankParams>;
   bank_balances_address: Request<PaginatedBalances>;

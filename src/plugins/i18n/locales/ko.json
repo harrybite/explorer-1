@@ -37,6 +37,8 @@
   "account": {
     "amount": "금액",
     "received": "최근 수신",
+    "did": "DID",
+    "username": "User Name",
     "type": "유형",
     "address": "주소",
     "acc": "계정",
