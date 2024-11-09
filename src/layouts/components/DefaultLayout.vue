@@ -83,8 +83,8 @@ dayjs()
     >
       <div class="flex justify-between mt-1 pl-4 py-4 mb-1">
         <RouterLink to="/" class="flex items-center">
-          <img class="w-10 h-10" src="../../assets/logo.png" />
-          <h1 class="flex-1 ml-3 text-2xl font-semibold dark:text-white">
+          <img class="w-13 h-10" src="../../assets/logo.png" />
+          <h1 class="flex-1 ml-2 text-2xl font-semibold dark:text-white">
             PersonaPulse
           </h1>
         </RouterLink>
