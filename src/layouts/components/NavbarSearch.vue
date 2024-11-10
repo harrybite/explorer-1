@@ -113,7 +113,7 @@ function confirm() {
             <input
               class="input flex-1 w-full !input-bordered"
               v-model="searchQuery"
-              placeholder="Height/Transaction/Account Address"
+              placeholder="Height/Transaction/DID/Account Address"
             />
             <div
               class="mt-2 text-right text-sm text-error"
