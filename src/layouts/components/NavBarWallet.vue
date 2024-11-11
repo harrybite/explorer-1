@@ -3,11 +3,15 @@ import { useRoute } from 'vue-router'
 import { useBaseStore, useBlockchain, useWalletStore } from '@/stores';
 import { Icon } from '@iconify/vue';
 import { ref, computed } from 'vue';
+import { T3ConnectWallet } from "./../../wallets/t3wallet"
+
+
 
 const route = useRoute();
 const walletStore = useWalletStore();
 const chainStore = useBlockchain();
 const baseStore = useBaseStore();
+const showModal = ref(false);
 // walletStore.$subscribe((m, s) => {
 //   console.log(m, s);
 // });
@@ -39,10 +43,21 @@ const params = computed(() => {
   if (chainStore.chainName == 'side') {
     return JSON.stringify({
       wallet: ['okex', 'unisat'],
-   });
+    });
   }
   return "";
 });
+
+async function ConnectWallet(){
+  const walletInfo = await T3ConnectWallet(baseStore, chainStore);
+  console.log("Connected wallet details:", walletInfo, chainStore.defaultHDPath);
+  // @ts-ignore
+  walletStore.setConnectedWallet(walletInfo);
+  await walletStore.loadMyAsset();
+  localStorage.setItem('connectedWallet', JSON.stringify(walletInfo));
+}
+
+
 
 </script>
 
@@ -54,9 +69,9 @@ const params = computed(() => {
         {{ walletStore.shortAddress || 'Wallet' }}</span>
     </label>
     <div tabindex="0" class="dropdown-content menu shadow p-2 bg-base-100 rounded w-52 md:!w-64 overflow-auto">
-      <!-- <label v-if="!walletStore?.currentAddress" for="PingConnectWallet" class="btn btn-sm btn-primary">
+      <label v-if="!walletStore?.currentAddress" @click="showModal = true" class="btn btn-sm btn-primary">
         <Icon icon="mdi:wallet" /><span class="ml-1 block">Connect Wallet</span>
-      </label> -->
+      </label>
       <div class="px-2 mb-1 text-gray-500 dark:text-gray-400 font-semibold">
         {{ walletStore.connectedWallet?.wallet }}
       </div>
@@ -94,11 +109,47 @@ const params = computed(() => {
       </div>
     </div>
   </div>
-  <Teleport to="body">
-    <ping-connect-wallet :chain-id="baseStore.currentChainId || 'cosmoshub-4'" :hd-path="chainStore.defaultHDPath"
+
+  <!-- connect wallet -->
+  <div>
+
+    <div v-if="showModal" class="cursor-pointer modal !pointer-events-auto !opacity-100 !visible"
+      @click="showModal = false">
+      <div class="relative modal-box cursor-default">
+        <!-- header -->
+        <div class="flex items-center justify-between">
+          <div class="text-lg font-bold flex flex-col md:!flex-row justify-between items-baseline">
+            <span class="mr-2">Connect Wallet</span>
+          </div>
+          <label htmlFor="modal-pool-modal" class="cursor-pointer" @click="showModal = false">
+            <Icon icon="zondicons:close-outline" class="text-2xl text-gray-500 dark:text-gray-400" />
+          </label>
+        </div>
+        <!-- body -->
+        <div class="mt-4">
+          <div class="">
+            <div class="mt-2 text-right text-sm">
+              <div class="block justify-items-start space-y-4">
+                <div class="w-full h-fit p-3 flex flex-row  border-2 rounded-xl 
+                hover:bg-gray-100 dark:hover:bg-[#373f59] cursor-pointer"
+                @click="ConnectWallet"
+                >
+                  <div class="basis-1/4 pl-3"><img class="w-10" src="./../../assets/wallets//t3wallet.png" /></div>
+                  <div class="text-base basis-1/2 font-bold">{{ "Connect T3 wallet" }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <ping-connect-wallet :chain-id="baseStore.currentChainId || 'cosmoshub-4'" :hd-path="chainStore.defaultHDPath"
       :addr-prefix="chainStore.current?.bech32Prefix || 'cosmos'" @connect="walletStateChange"
-      @keplr-config="walletStore.suggestChain()"  :params="params" />
-  </Teleport>
+      @keplr-config="walletStore.suggestChain()"  :params="params" /> -->
+
 </template>
 
 <style>

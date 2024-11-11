@@ -10,15 +10,17 @@ import type {
 } from '@/types';
 import { useStakingStore } from './useStakingStore';
 import router from '@/router'
+const storewlletkey = 'connectedWallet'
 
 export const useWalletStore = defineStore('walletStore', {
   state: () => {
+    const savedWallet = JSON.parse(localStorage.getItem(storewlletkey) || '{}');
     return {
       balances: [] as Coin[],
       delegations: [] as Delegation[],
       unbonding: [] as UnbondingResponses[],
       rewards: {total: [], rewards: []} as DelegatorRewards,
-      wallet: {} as WalletConnected
+      wallet: savedWallet?.cosmosAddress ? savedWallet : {} as WalletConnected
     };
   },
   getters: {
@@ -85,8 +87,7 @@ export const useWalletStore = defineStore('walletStore', {
     }
   },
   actions: {
-
-    async loadMyAsset() {
+      async loadMyAsset() {
       if (!this.currentAddress) return;
       this.blockchain.rpc.getBankBalances(this.currentAddress).then((x) => {
         this.balances = x.balances;
@@ -122,6 +123,7 @@ export const useWalletStore = defineStore('walletStore', {
       const chainStore = useBlockchain();
       const key = chainStore.defaultHDPath;
       localStorage.removeItem(key);
+      localStorage.removeItem(storewlletkey);
       this.$reset()
     },
     setConnectedWallet(value: WalletConnected) {

@@ -123,6 +123,8 @@ const amount = computed({
   }
 })
 
+
+
 </script>
 
 <template>
@@ -284,6 +286,9 @@ const amount = computed({
           class="float-right text-sm cursor-pointert link link-primary no-underline font-medium"
           :to="`/${chain}/account/${walletStore.currentAddress}`">{{ $t('index.more') }}</RouterLink>
       </div>
+
+      {{ console.log("Balance: ",walletStore.currentAddress, walletStore.balanceOfStakingToken) }}
+
       <div class="grid grid-cols-1 md:!grid-cols-4 auto-cols-auto gap-4 px-4 pb-6">
         <div class="bg-gray-100 dark:bg-[#373f59] rounded-sm px-4 py-3">
           <div class="text-sm mb-1">{{ $t('account.balance') }}</div>

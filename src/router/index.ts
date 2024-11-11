@@ -17,7 +17,6 @@ const router = createRouter({
   routes: updatedRoutes
 });
 
-console.log("router", router)
 //update current blockchain
 router.beforeEach((to) => {
     // const { chain } = to.params
