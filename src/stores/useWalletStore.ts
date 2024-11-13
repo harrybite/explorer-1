@@ -10,7 +10,7 @@ import type {
 } from '@/types';
 import { useStakingStore } from './useStakingStore';
 import router from '@/router'
-const storewlletkey = 'connectedWallet'
+export const storewlletkey = 'connectedWallet'
 
 export const useWalletStore = defineStore('walletStore', {
   state: () => {

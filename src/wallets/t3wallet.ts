@@ -3,11 +3,6 @@ import type {
   WalletConnected,
 } from '@/types';
 
-// export interface WalletConnected {
-//   wallet: string;
-//   cosmosAddress: string;
-//   hdPath: string;
-// }
 
 export async function T3ConnectWallet(chainID: any, chainStore: any) {
   try {

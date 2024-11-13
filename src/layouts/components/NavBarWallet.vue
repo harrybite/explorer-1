@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { useBaseStore, useBlockchain, useWalletStore } from '@/stores';
+import { useBaseStore, useBlockchain, useWalletStore, storewlletkey } from '@/stores';
 import { Icon } from '@iconify/vue';
 import { ref, computed } from 'vue';
 import { T3ConnectWallet } from "./../../wallets/t3wallet"
-
-
 
 const route = useRoute();
 const walletStore = useWalletStore();
@@ -54,7 +52,12 @@ async function ConnectWallet(){
   // @ts-ignore
   walletStore.setConnectedWallet(walletInfo);
   await walletStore.loadMyAsset();
-  localStorage.setItem('connectedWallet', JSON.stringify(walletInfo));
+  localStorage.setItem(storewlletkey, JSON.stringify(walletInfo));
+}
+
+async function DisConnectWallet(){
+  walletStore.disconnect()
+  showModal.value = false
 }
 
 
@@ -91,7 +94,7 @@ async function ConnectWallet(){
         <div v-if="walletStore.currentAddress" class="divider mt-1 mb-1"></div>
         <a v-if="walletStore.currentAddress"
           class="block py-2 px-2 hover:bg-gray-100 dark:hover:bg-[#353f5a] rounded cursor-pointer"
-          @click="walletStore.disconnect()">Disconnect</a>
+          @click="DisConnectWallet">Disconnect</a>
       </div>
     </div>
     <div class="toast" v-show="showCopyToast === 1">

@@ -11,3 +11,5 @@ export * from './useDistributionStore';
 export * from './useParamsStore';
 export * from './useWalletStore';
 export * from './useTxDialog';
+
+export { storewlletkey } from './useWalletStore';
