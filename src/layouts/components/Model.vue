@@ -11,6 +11,8 @@
   </template>
   
   <script>
+
+   
   export default {
     props: {
       isVisible: {
@@ -24,6 +26,8 @@
       }
     }
   };
+
+ 
   </script>
   
   <style scoped>

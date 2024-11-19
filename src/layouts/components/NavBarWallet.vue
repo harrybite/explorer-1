@@ -17,6 +17,7 @@ function walletStateChange(res: any) {
   walletStore.setConnectedWallet(res.detail?.value);
 }
 let showCopyToast = ref(0);
+
 async function copyAdress(address: string) {
   try {
     await navigator.clipboard.writeText(address);
@@ -31,6 +32,7 @@ async function copyAdress(address: string) {
     }, 1000);
   }
 }
+
 const tipMsg = computed(() => {
   return showCopyToast.value === 2
     ? { class: 'error', msg: 'Copy Error!' }

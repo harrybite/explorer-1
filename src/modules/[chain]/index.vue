@@ -14,8 +14,8 @@ import {
 import { onMounted, ref } from 'vue';
 import { useIndexModule, colorMap } from './indexStore';
 import { computed } from '@vue/reactivity';
-import send from '@/modals/send.vue';
-
+// import SendModal from '@/modals/send.vue';
+import QrCode from '@/modals/qrcode.vue';
 import CardStatisticsVertical from '@/components/CardStatisticsVertical.vue';
 import ProposalListItem from '@/components/ProposalListItem.vue';
 import ArrayObjectElement from '@/components/dynamic/ArrayObjectElement.vue'
@@ -33,6 +33,7 @@ const paramStore = useParamStore()
 const coinInfo = computed(() => {
   return store.coinInfo;
 });
+const isVisible = ref(false)
 
 onMounted(() => {
   store.loadDashboard();
@@ -282,10 +283,19 @@ const amount = computed({
 
     <div class="bg-base-100 rounded mt-4 shadow">
       <div class="flex justify-between px-4 pt-4 pb-2 text-lg font-semibold text-main">
-        <span class="truncate" >{{ walletStore.currentAddress || 'Not Connected' }}</span>
-        <RouterLink v-if="walletStore.currentAddress"
-          class="float-right text-sm cursor-pointert link link-primary no-underline font-medium"
-          :to="`/${chain}/account/${walletStore.currentAddress}`">{{ $t('index.more') }}</RouterLink>
+        <div v-if="walletStore.currentAddress" class="flex text-main text-ellipsis overflow-hidden ">
+          <Icon
+              icon="grommet-icons:qr"
+              @click="isVisible = true"
+              class="text-primary mr-2 cursor-pointer"
+              style="width: 27px; height: 27px"
+            />
+            <RouterLink v-if="walletStore.currentAddress"
+             class="float-right cursor-pointert link link-primary no-underline font-medium"
+             :to="`/${chain}/account/${walletStore.currentAddress}`">
+           <span class="truncate" >{{ walletStore.currentAddress || 'Not Connected' }}</span>
+          </RouterLink>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 md:!grid-cols-4 auto-cols-auto gap-4 px-4 pb-6">
@@ -377,12 +387,12 @@ const amount = computed({
       </div>
 
       <div class="grid grid-cols-3 gap-4 px-4 pb-6 mt-4">
-        <send/>
+        <QrCode v-model="isVisible" :senderAddress="walletStore.currentAddress"/>
         <!-- <label for="PingTokenConvert" class="btn btn-primary text-white">{{ $t('index.btn_swap') }}</label> -->
-        <label for="send" class="btn !bg-yes !bg-info  text-white" @click="dialog.open('send', {}, updateState)">{{ $t('account.btn_send') }}</label>
-        <label  class="btn !bg-info !border-info text-white">{{ $t('index.receive') }}</label>
-        <label for="delegate" class="btn !bg-info !border-info text-white"
-          @click="dialog.open('delegate', {}, updateState)">{{ $t('account.btn_delegate') }}</label>
+        <!-- <label class="btn !bg-yes !bg-info  text-white" @click="isVisible = true">{{ $t('account.btn_send') }}</label> -->
+        <!-- <label  class="btn !bg-info !border-info text-white">{{ $t('index.receive') }}</label> -->
+        <!-- <label for="delegate" class="btn !bg-info !border-info text-white"
+          @click="dialog.open('delegate', {}, updateState)">{{ $t('account.btn_delegate') }}</label> -->
        
       </div>
       <Teleport to="body">

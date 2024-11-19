@@ -164,13 +164,13 @@ function mapAmount(events:{type: string, attributes: {key: string, value: string
         <h2 class="card-title mb-4">{{ $t('account.assets') }}</h2>
         <!-- button -->
         <div class="flex justify-end mb-4 pr-5">
-            <label
+            <!-- <label
               for="send"
               class="btn btn-primary btn-sm mr-2"
               @click="dialog.open('send', {}, updateEvent)"
               >{{ $t('account.btn_send') }}</label
-            >
-            <label
+            > -->
+            <!-- <label
               for="transfer"
               class="btn btn-primary btn-sm"
               @click="
@@ -182,7 +182,7 @@ function mapAmount(events:{type: string, attributes: {key: string, value: string
                   updateEvent
                 )
               "
-              >{{ $t('account.btn_transfer') }}</label
+              >{{ $t('account.btn_transfer') }}</label -->
             >
           </div>
       </div>
